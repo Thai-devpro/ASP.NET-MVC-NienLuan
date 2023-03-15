@@ -1,0 +1,227 @@
+﻿@model NienLuanCoSo.CHIENDICH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Chiến Dịch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            Tên chiến dịch
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEN_CD)
+        </dd>
+
+        <dt>
+            Ngày bắt đầu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYBATDAU)
+        </dd>
+
+        <dt>
+            Ngày kết thúc
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYKETTHUC)
+        </dd>
+
+        <dt>
+            Nội dung
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOIDUNG_CD)
+        </dd>
+
+        <dt>
+            Ảnh
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/Content/images/chiendich/"+Model.ANH_CD)" width="45" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { Model.MA_CD }) |
+    @Html.ActionLink("Về danh sách", "getChienDich")
+</p>
+
+<hr />
+<h4>Thông tin quyên góp của chiến dịch</h4>
+@{ NIENLUANCOSOEntities4 db = new NIENLUANCOSOEntities4();
+    if (Model.TT_QUYENGOP_HIENVAT.Count > 0)
+    {
+        var tongqg = 0;
+       
+        var listChienDich = from s in db.TT_QUYENGOP_HIENVAT where s.MA_CD == Model.MA_CD select s;
+        <table class="table">
+            @foreach (var item in listChienDich)
+            {
+                if (item.TRANGTHAI_HV.Trim() == "Đã nhận")
+                {
+                    tongqg += (item.HIEN_VAT.GIA * item.SOLUONG_QG).GetValueOrDefault();
+                }
+            }
+
+            <tr style="te">
+                <b>Tổng giá trị quyên góp đã nhận của chiến dịch:  @Html.FormatValue(tongqg, "{0:#,###}") VNĐ</b> 
+            </tr>
+            <tr>
+                <th>
+                    Mã quyên góp
+                </th>
+                <th>
+                    Hiện vật
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Mạnh thường quân
+                </th>
+                <th>
+                    Chiến dịch
+                </th>
+                <th>
+                    Ghi chú
+                </th>
+
+                <th>
+                    Trạng thái
+                </th>
+                <th>
+                    Ngày quyên góp
+                </th>
+                <th>
+                    Giá trị ước tính
+                </th>
+            </tr>
+            @foreach (var item in listChienDich)
+            {
+
+                <tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MA_QGHV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HIEN_VAT.TEN_HV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SOLUONG_QG) <a>@item.HIEN_VAT.DONVITINH</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MANHTHUONGQUAN.HOTEN_MTQ)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CHIENDICH.TEN_CD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GHICHU)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TRANGTHAI_HV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngay_QG)
+                    </td>
+                    <td>
+                        @(item.HIEN_VAT.GIA *item.SOLUONG_QG) <a style="color:black">VNĐ</a>
+                    </td>
+
+                </tr>
+                </tr>
+            }
+
+        </table>
+    }
+    <hr />
+    <h4>Thông tin trao tặng của chiến dịch</h4>
+    if (Model.TT_QUYENGOP_HIENVAT.Count > 0)
+    {
+        var tongtt = 0;
+        var listChienDich = from s in db.TT_TRAOTANG where s.MA_CD == Model.MA_CD select s;
+        <table class="table">
+            @foreach (var item in listChienDich)
+            {
+
+
+                tongtt += (item.HIEN_VAT.GIA * item.SOLUONG_TT).GetValueOrDefault();
+
+            }
+
+            <tr>
+                <b>Tổng giá trị trao tặng của chiến dịch:  @Html.FormatValue(tongtt, "{0:#,###}") VNĐ</b>
+            </tr>
+            <tr>
+
+                <th>
+                    Nơi hỗ trợ
+                </th>
+                <th>
+                    Chiến dịch
+                </th>
+                <th>
+                    Hiện vật
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Ngày tặng
+                </th>
+                <th>
+                    Ảnh
+                </th>
+                <th>
+                    Giá trị ước tính
+                </th>
+            </tr>
+            @foreach (var item in listChienDich)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOIHOTRO.DIACHI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CHIENDICH.TEN_CD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HIEN_VAT.TEN_HV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SOLUONG_TT) <a>@item.HIEN_VAT.DONVITINH</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYTANG)
+                    </td>
+                    <td>
+                        <img src="@Url.Content("~/Content/images/traotang/"+item.ANH_TT)" width="45" />
+                    </td>
+                    <td>
+                        @(item.HIEN_VAT.GIA *item.SOLUONG_TT) <a style="color:black">VNĐ</a>
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    }
+}

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<NienLuanCoSo.TT_TRAOTANG>
+
+@{
+    ViewBag.Title = "Thông tin trao tặng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin trao tặng</h2>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            Nơi tặng
+        </th>
+        <th>
+            Chiến dịch
+        </th>
+        <th>
+            Hiện vật
+        </th>
+
+        <th>
+            Số lượng
+        </th>
+
+        <th>
+            Ngày tặng
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Trị giá
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NOIHOTRO.DIACHI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHIENDICH.TEN_CD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HIEN_VAT.TEN_HV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONG_TT) <a style="color:black">@item.HIEN_VAT.DONVITINH</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYTANG)
+            </td>
+            <td>
+                <img src="@Url.Content("~/Content/images/traotang/"+item.ANH_TT)" width="45" />
+            </td>
+            
+            <td>
+                @(item.HIEN_VAT.GIA *item.SOLUONG_TT) <a style="color:black">VNĐ</a>
+            </td>
+        </tr>
+    }
+
+</table>

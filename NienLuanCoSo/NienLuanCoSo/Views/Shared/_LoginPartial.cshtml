@@ -1,0 +1,15 @@
+﻿@if (Session["Taikhoanmtq"] == null)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Đăng nhập", "Dangnhap", "User")</li>
+        <li>@Html.ActionLink("Đăng kí", "Create", "User")</li>
+    </ul>
+}
+else
+{
+<ul class="nav navbar-nav navbar-right">
+    <li>@Html.ActionLink("Hi! " + Session["TaiKhoanmtq"],"Details", "User")</li>
+
+    <li>@Html.ActionLink("Đăng xuất", "Dangxuat", "User")</li>
+</ul>
+}

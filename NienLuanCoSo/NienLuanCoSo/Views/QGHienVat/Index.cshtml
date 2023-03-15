@@ -1,0 +1,84 @@
+﻿@model IEnumerable<NienLuanCoSo.TT_QUYENGOP_HIENVAT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách quyên góp hiện vật</h2>
+<p>
+    @Html.ActionLink("Quyên góp", "Create")
+</p>
+<p>
+    @Html.ActionLink("Xem danh sách hiện vật có thể quyên góp", "DSHV")
+</p>
+<p><a class="nav-link" href="https://localhost:44334/ChienDich/Index">
+    <span>Xem danh sách chiến dịch</span>
+</a></p>
+<table class="table">
+    <tr>
+       
+        <th>
+           Hiện vật
+        </th>
+        <th>
+            Mạnh thường quân
+        </th>
+        <th>
+            Chiến dịch
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Đơn vị tính
+        </th>
+        <th>
+            Ghi chú
+        </th>
+        <th>
+            Thời gian quyên góp
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Trị giá
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.HIEN_VAT.TEN_HV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANHTHUONGQUAN.HOTEN_MTQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHIENDICH.TEN_CD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONG_QG)
+            </td>
+            <td>
+                @item.HIEN_VAT.DONVITINH
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GHICHU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay_QG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRANGTHAI_HV)
+            </td>
+            <td>
+                @(item.HIEN_VAT.GIA *item.SOLUONG_QG) <a style="color:black">VNĐ</a>
+            </td>
+        </tr>
+    }
+</table>

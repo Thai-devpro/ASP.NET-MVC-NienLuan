@@ -1,0 +1,66 @@
+﻿@model IEnumerable<NienLuanCoSo.NOIHOTRO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách nơi hỗ trợ</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            Mạnh thường quân
+        </th>
+        <th>
+          Địa chỉ
+        </th>
+        <th>
+          Tình trạng
+        </th>
+        <th>
+           Cần hỗ trợ
+        </th>
+        <th>
+          Trạng thái
+        </th>
+        <th>
+         Ảnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.MANHTHUONGQUAN.HOTEN_MTQ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIACHI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TINHTRANG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CANHOTRO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANGTHAI_NHT)
+        </td>
+        <td>  
+            <img src="@Url.Content("~/Content/images/noihotro/"+item.ANH_NTH)" width="45" />
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new {  id=item.MANOI}) |
+          
+            @Html.ActionLink("Xóa", "Delete", new { id = item.MANOI })
+        </td>
+    </tr>
+}
+
+</table>

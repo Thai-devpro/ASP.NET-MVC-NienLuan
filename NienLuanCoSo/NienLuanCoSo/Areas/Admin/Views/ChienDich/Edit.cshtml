@@ -1,0 +1,71 @@
+﻿@model NienLuanCoSo.CHIENDICH
+
+@{
+    ViewBag.Title = "Chỉnh sửa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa</h2>
+@using (Html.BeginForm("Edit", "ChienDich", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Chiến Dịch</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.MA_CD)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TEN_CD, "Tên chiến dịch", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TEN_CD, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TEN_CD, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NGAYBATDAU, "Ngày bắt đầu", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="date" name="NGAYBATDAU" value="@string.Format("{0:yyyy-MM-dd}",DateTime.Now)" />
+            @Html.ValidationMessageFor(model => model.NGAYBATDAU, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NGAYKETTHUC, "Ngày kết thúc", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="date" name="NGAYKETTHUC" value="@string.Format("{0:yyyy-MM-dd}",DateTime.Now)" />
+            @Html.ValidationMessageFor(model => model.NGAYKETTHUC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NOIDUNG_CD, "Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NOIDUNG_CD, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NOIDUNG_CD, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">
+            Ảnh:
+        </label>
+        <div class="col-md-10">
+            <input type="file" name="image" placeholder="Thêm ảnh" />
+            @ViewBag.ThongBao
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Thêm" class="btn btn-outline-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Về danh sách", "getChienDich")
+</div>

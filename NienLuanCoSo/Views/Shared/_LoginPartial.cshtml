@@ -1,0 +1,18 @@
+﻿@if (Session["Taikhoanmtq"] == null)
+{<font color="black">
+        <ul class="nav navbar-nav navbar-right" style="color:black">
+            <li>@Html.ActionLink("Đăng nhập", "Dangnhap", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
+            <li>@Html.ActionLink("Đăng kí", "Create", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
+        </ul>
+    </font>
+}
+else
+{
+<font color="black">
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Hi! " + Session["TaiKhoanmtq"], "Details", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+        <li>@Html.ActionLink("Thoát", "Dangxuat", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
+    </ul>
+</font>
+}

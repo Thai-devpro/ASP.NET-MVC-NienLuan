@@ -1,0 +1,67 @@
+﻿@model IEnumerable<NienLuanCoSo.CHIENDICH>
+
+@{
+    ViewBag.Title = "getChienDich";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách chiến dịch</h2>
+<div class="form-group form-inline">
+    <form style="margin: 0px; padding: 0px;">
+        <select name="Search" class="form-control">
+            <option value="all">Tất cả</option>
+            <option value="top10">Top 10 quyên góp nhiều nhất</option>
+            <option value="top10thang">Top 10 quyên góp nhiều nhất tháng này</option>
+            <option value="top10nam">Top 10 quyên góp nhiều nhất năm</option>
+        </select>
+
+        <input type="submit" class="btn btn-success" value="Tìm kiếm" />
+    </form>
+</div>
+<input type="button" class="btn btn-success" value="Thêm mới" onclick="location.href='@Url.Action("Create", "ChienDich")'" />
+<table class="table">
+    <tr>
+        <th>
+            Tên CD
+        </th>
+        <th>
+            Ngày bắt đầu
+        </th>
+        <th>
+           Ngày kết thúc
+        </th>
+        <th>
+            Nội dung
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TEN_CD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYBATDAU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYKETTHUC)
+        </td>
+        <td style="width:350px">
+            @Html.DisplayFor(modelItem => item.NOIDUNG_CD)
+        </td>
+        <td>
+            <img src="@Url.Content("~/Content/images/chiendich/"+item.ANH_CD)" width="45" />
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.MA_CD }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MA_CD }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MA_CD })
+        </td>
+    </tr>
+}
+
+</table>

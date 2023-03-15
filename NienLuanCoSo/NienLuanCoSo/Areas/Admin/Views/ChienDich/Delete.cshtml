@@ -1,0 +1,63 @@
+﻿@model NienLuanCoSo.CHIENDICH
+
+@{
+    ViewBag.Title = "Xóa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2> @ViewBag.erro</h2>
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc muốn xóa mục này?</h3>
+<div>
+    <h4>Chiến dịch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Chiến dịch
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEN_CD)
+        </dd>
+
+        <dt>
+            Ngày bắt đầu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYBATDAU)
+        </dd>
+
+        <dt>
+            Ngày kết thúc
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYKETTHUC)
+        </dd>
+        <dt>
+            Nội dung
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOIDUNG_CD)
+        </dd>
+        <dt>
+            Ảnh
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/Content/images/traotang/"+ Model.ANH_CD)" width="45" />
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Về danh sách", "getChienDich")
+        </div>
+    }
+</div>

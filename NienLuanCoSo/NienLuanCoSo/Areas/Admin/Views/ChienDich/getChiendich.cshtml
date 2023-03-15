@@ -1,0 +1,58 @@
+﻿@model IEnumerable<NienLuanCoSo.CHIENDICH>
+
+@{
+    ViewBag.Title = "getChienDich";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách chiến dịch</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên CD
+        </th>
+        <th>
+            Ngày bắt đầu
+        </th>
+        <th>
+           Ngày kết thúc
+        </th>
+        <th>
+            Nội dung
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TEN_CD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYBATDAU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYKETTHUC)
+        </td>
+        <td style="width:350px">
+            @Html.DisplayFor(modelItem => item.NOIDUNG_CD)
+        </td>
+        <td>
+            <img src="@Url.Content("~/Content/images/chiendich/"+item.ANH_CD)" width="45" />
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.MA_CD }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MA_CD }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MA_CD })
+        </td>
+    </tr>
+}
+
+</table>

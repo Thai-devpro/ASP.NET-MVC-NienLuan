@@ -1,0 +1,41 @@
+﻿@model NienLuanCoSo.LOAI_HV
+
+@{
+    ViewBag.Title = "Xóa hiện loại hiện vật";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3>Bạn chắc chắn muốn xóa?</h3>
+<h2>
+    @ViewBag.Loi
+</h2>
+<div>
+    <h4>Loại hiện vật</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            Mã loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MA_LOAI)
+        </dd>
+
+        <dt>
+            Diễn giải
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIEN_GIAI)
+        </dd>
+
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Về danh sách", "Index")
+        </div>
+    }
+</div>

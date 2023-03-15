@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="493e1e1d02ca4d5ba72f13d449b9ff2b" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.CHIENDICH" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.HIEN_VAT" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.LOAI_HV" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.MANHTHUONGQUAN" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.NOIHOTRO" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.TAIKHOAN_ADMIN" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.TAIKHOAN_MTQ" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.TT_QUYENGOP_HIENVAT" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.TT_TRAOTANG" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_TT_QUYENGOP_HIENVAT_CHIENDICH" ManuallyRouted="false" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_TT_TRAOTANG_CHIENDICH" ManuallyRouted="false" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_HIEN_VAT_LOAI_HV" ManuallyRouted="false" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_TT_QUYENGOP_HIENVAT_HIEN_VAT" ManuallyRouted="false" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_TT_TRAOTANG_HIEN_VAT" ManuallyRouted="false" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_NOIHOTRO_MANHTHUONGQUAN" ManuallyRouted="false" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_TAIKHOA_MTQ_MANHTHUONGQUAN" ManuallyRouted="false" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_TT_QUYENGOP_HIENVAT_MANHTHUONGQUAN" ManuallyRouted="false" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_TT_TRAOTANG_NOIHOTRO1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.CHUCNANG" Width="1.5" PointX="13.5" PointY="12" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.CHUCVU" Width="1.5" PointX="8.375" PointY="12.25" />
+        <EntityTypeShape EntityType="NIENLUANCOSOModel.THANHVIEN" Width="1.5" PointX="10.625" PointY="8" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_CHIENDICH_NOIHOTRO" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_CHIENDICH_THANHVIEN" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_THANHVIEN_CHUCVU" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_NOIHOTRO_THANHVIEN" />
+        <AssociationConnector Association="NIENLUANCOSOModel.FK_TT_TRAOTANG_THANHVIEN" />
+        <AssociationConnector Association="NIENLUANCOSOModel.QUYEN" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

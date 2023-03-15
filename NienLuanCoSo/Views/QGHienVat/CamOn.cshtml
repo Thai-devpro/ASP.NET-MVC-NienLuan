@@ -1,0 +1,82 @@
+﻿@model NienLuanCoSo.TT_QUYENGOP_HIENVAT
+
+@{
+    ViewBag.Title = "CamOn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cảm ơn bạn đã quyên góp</h2>
+
+<div>
+    <h4>Xin hãy gửi kèm <a style="color:red">MÃ QUYÊN GÓP HIỆN VẬT: " @Model.MA_QGHV"</a> này cho chúng tôi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã quyên góp hiện vật
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MA_QGHV)
+        </dd>
+
+
+
+        <dt>
+            Mạnh thường quân
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MANHTHUONGQUAN.HOTEN_MTQ)
+        </dd>
+
+        <dt>
+            Chiến dịch
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHIENDICH.TEN_CD)
+        </dd>
+        <dt>
+            Hiện vật
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HIEN_VAT.TEN_HV)
+        </dd>
+
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONG_QG) <a style="color:black">@Model.HIEN_VAT.DONVITINH</a>
+        </dd>
+        <dt>
+            Ghi chú
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GHICHU)
+        </dd>
+        <dt>
+            Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI_HV)
+        </dd>
+
+        <dt>
+           Ngày quyên góp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay_QG)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Xem danh sách quyên góp", "Index")
+</p>

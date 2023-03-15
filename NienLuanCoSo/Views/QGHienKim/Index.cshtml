@@ -1,0 +1,60 @@
+﻿@model IEnumerable<NienLuanCoSo.TT_QUYENGOP_HIENKIM>
+
+@{
+    ViewBag.Title = "Thông tin quyên góp hiện kim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin quyên góp hiện kim</h2>
+
+<p>
+    @Html.ActionLink("Quyên góp", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Số tiền
+        </th>
+        <th>
+            Thời gian nhận
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Chiến dịch
+        </th>
+        <th>
+            Mạnh thường quân
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOTIEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THOIGIANNHAN_HK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRANGTHAI_HK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHIENDICH.TEN_CD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANHTHUONGQUAN.HOTEN_MTQ)
+            </td>
+            <td>
+
+              
+
+            </td>
+        </tr>
+
+    }
+    <tr><td colspan="5"><strong>Tổng số: @Model.Sum(s => s.SOTIEN) VND</strong></td></tr>
+</table>

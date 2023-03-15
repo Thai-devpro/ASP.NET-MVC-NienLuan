@@ -1,0 +1,66 @@
+﻿@model IEnumerable<NienLuanCoSo.TT_TRAOTANG>
+
+@{
+    ViewBag.Title = "Trao tặng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách Trao tặng</h2>
+
+
+<input type="button" class="btn btn-success" value="Thêm mới" onclick="location.href='@Url.Action("Create", "TraoTang")'" />
+<table class="table">
+    <tr>
+
+        <th>
+            Nơi hỗ trợ
+        </th>
+        <th>
+            Chiến dịch
+        </th>
+        <th>
+            Hiện vật
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Ngày tặng
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NOIHOTRO.DIACHI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHIENDICH.TEN_CD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HIEN_VAT.TEN_HV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONG_TT) <a>@item.HIEN_VAT.DONVITINH</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYTANG)
+            </td>
+            <td>
+                <img src="@Url.Content("~/Content/images/traotang/"+item.ANH_TT)" width="45" />
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MA_TT }) |
+
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MA_TT })
+            </td>
+        </tr>
+    }
+
+</table>

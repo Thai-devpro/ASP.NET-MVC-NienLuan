@@ -1,0 +1,67 @@
+﻿@model NienLuanCoSo.MANHTHUONGQUAN
+
+@{
+    ViewBag.Title = "Thông tin MTQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin</h2>
+
+<div>
+    <h4>Mạnh thường quân</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+          Họ tên:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOTEN_MTQ)
+        </dd>
+
+        <dt>
+          Ngày sinh:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYSINH_MTQ)
+        </dd>
+
+        <dt>
+          Giới tính:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIOITINH_MTQ)
+        </dd>
+
+        <dt>
+          Đơn vị tổ chức:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONVI_TOCHUC_MTQ)
+        </dd>
+
+        <dt>
+           Số điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT_MTQ)
+        </dd>
+
+        <dt>
+           Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI_MTQ)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa thông tin", "Edit", "User")
+   
+</p>

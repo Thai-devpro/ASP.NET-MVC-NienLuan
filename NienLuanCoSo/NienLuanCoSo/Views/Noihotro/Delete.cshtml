@@ -1,0 +1,73 @@
+﻿@model NienLuanCoSo.NOIHOTRO
+
+@{
+    ViewBag.Title = "Xóa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc muốn xóa nơi hỗ trợ này không?</h3>
+<div>
+    <h4>Nơi hỗ trợ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+
+        <dt>
+          Tình trạng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINHTRANG)
+        </dd>
+
+        <dt>
+          Cần hỗ trợ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANHOTRO)
+        </dd>
+
+        <dt>
+          Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI_NHT)
+        </dd>
+
+        <dt>
+          Ảnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANH_NTH)
+        </dd>
+
+        <dt>
+          Mạnh thường quân
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MANHTHUONGQUAN.HOTEN_MTQ)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Về danh sách", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<NienLuanCoSo.HIEN_VAT>
+
+@{
+    ViewBag.Title = "DSHV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách hiện vật có thể quyên góp</h2>
+
+<table class="table">
+    <tr>
+
+
+        <th>
+            Tên hiện vật
+        </th>
+        <th>
+            Số lượng còn
+        </th>
+        <th>
+            Đơn vị tính
+        </th>
+        <th>
+            Giá
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TEN_HV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONGCON)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONVITINH)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GIA) <a style="color:black">VNĐ</a>
+            </td>
+
+
+        </tr>
+    }
+    @Html.ActionLink("Xem danh sách quyên góp", "Index")
+</table>

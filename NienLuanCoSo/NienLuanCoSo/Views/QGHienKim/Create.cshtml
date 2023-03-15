@@ -1,0 +1,61 @@
+﻿@model NienLuanCoSo.TT_QUYENGOP_HIENKIM
+
+@{
+    ViewBag.Title = "Quyên góp hiện kim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Quyên góp hiện kim</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.MA_CD, "Chiến dịch", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("MA_CD", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MA_CD, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MA_MTQ, "Mạnh thường quân", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <a style="width:280px" class="form-control">@Session["Taikhoanmtq"]</a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SOTIEN,"Số tiền", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SOTIEN, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SOTIEN, "", new { @class = "text-danger" })
+            <a>VND</a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.THOIGIANNHAN_HK,"Thời gian gửi", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.THOIGIANNHAN_HK, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.THOIGIANNHAN_HK, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Quyên góp" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Danh sách chiến dịch", "Index", "ChienDich")
+</div>

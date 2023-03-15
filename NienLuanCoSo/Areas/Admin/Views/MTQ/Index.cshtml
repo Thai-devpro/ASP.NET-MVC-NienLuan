@@ -1,0 +1,75 @@
+﻿@model IEnumerable<NienLuanCoSo.MANHTHUONGQUAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách Người dùng</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group form-inline">
+        <form style="margin: 0px; padding: 0px;">
+            <select name="Search" class="form-control">
+                <option value="all">Tất cả</option>
+                <option value="top10">Top 10 người dùng quyên góp nhiều nhất</option>
+                <option value="top10thang">Top 10 người dùng quyên góp nhiều nhất tháng này</option>
+                <option value="top10nam">Top 10 người dùng quyên góp nhiều nhất năm</option>
+            </select>
+           
+            <input type="submit" class="btn btn-success" value="Tìm kiếm" />
+        </form>
+    </div>
+}
+<table class="table">
+    <tr>
+
+        <th>
+            Họ Tên
+        </th>
+        <th>
+            Ngày sinh
+        </th>
+        <th>
+            Giới tính
+        </th>
+        <th>
+            Đơn vị
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.HOTEN_MTQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYSINH_MTQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GIOITINH_MTQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONVI_TOCHUC_MTQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT_MTQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIACHI_MTQ)
+            </td>
+
+        </tr>
+    }
+
+</table>

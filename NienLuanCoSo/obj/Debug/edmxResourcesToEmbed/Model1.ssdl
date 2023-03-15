@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NIENLUANCOSOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHIENDICH">
+    <Key>
+      <PropertyRef Name="MA_CD" />
+    </Key>
+    <Property Name="MA_CD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEN_CD" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="NGAYBATDAU" Type="datetime" Nullable="false" />
+    <Property Name="NGAYKETTHUC" Type="datetime" Nullable="false" />
+    <Property Name="NOIDUNG_CD" Type="nchar" MaxLength="500" Nullable="false" />
+    <Property Name="ANH_CD" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MA_TV" Type="int" />
+    <Property Name="MA_NOI" Type="int" />
+  </EntityType>
+  <EntityType Name="CHUCNANG">
+    <Key>
+      <PropertyRef Name="MA_CN" />
+    </Key>
+    <Property Name="MA_CN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEN_CN" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CHUCVU">
+    <Key>
+      <PropertyRef Name="MA_CV" />
+    </Key>
+    <Property Name="MA_CV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEN_CV" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HIEN_VAT">
+    <Key>
+      <PropertyRef Name="MA_HV" />
+    </Key>
+    <Property Name="MA_LOAI" Type="int" Nullable="false" />
+    <Property Name="MA_HV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEN_HV" Type="nchar" MaxLength="50" />
+    <Property Name="DONVITINH" Type="nchar" MaxLength="10" />
+    <Property Name="SOLUONGCON" Type="int" />
+    <Property Name="GIA" Type="int" />
+  </EntityType>
+  <EntityType Name="LOAI_HV">
+    <Key>
+      <PropertyRef Name="MA_LOAI" />
+    </Key>
+    <Property Name="MA_LOAI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DIEN_GIAI" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MANHTHUONGQUAN">
+    <Key>
+      <PropertyRef Name="MA_MTQ" />
+    </Key>
+    <Property Name="MA_MTQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HOTEN_MTQ" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="NGAYSINH_MTQ" Type="date" Nullable="false" />
+    <Property Name="GIOITINH_MTQ" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="DONVI/TOCHUC_MTQ" Type="nchar" MaxLength="50" />
+    <Property Name="SDT_MTQ" Type="int" Nullable="false" />
+    <Property Name="DIACHI_MTQ" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NOIHOTRO">
+    <Key>
+      <PropertyRef Name="MANOI" />
+    </Key>
+    <Property Name="MANOI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MA__MTQ" Type="int" Nullable="false" />
+    <Property Name="DIACHI" Type="nchar" MaxLength="255" Nullable="false" />
+    <Property Name="TINHTRANG" Type="nchar" MaxLength="255" Nullable="false" />
+    <Property Name="CANHOTRO" Type="nchar" MaxLength="255" Nullable="false" />
+    <Property Name="TRANGTHAI_NHT" Type="nchar" MaxLength="10" />
+    <Property Name="MA_TV" Type="int" />
+    <Property Name="ANH_NTH" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'NIENLUANCOSO.dbo.QUYEN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="QUYEN">
+    <Key>
+      <PropertyRef Name="MA_CV" />
+      <PropertyRef Name="MA_CN" />
+    </Key>
+    <Property Name="MA_CV" Type="int" Nullable="false" />
+    <Property Name="MA_CN" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN_ADMIN">
+    <Key>
+      <PropertyRef Name="TAIKHOAN" />
+    </Key>
+    <Property Name="TAIKHOAN" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATKHAU" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN_MTQ">
+    <Key>
+      <PropertyRef Name="MA_MTQ" />
+    </Key>
+    <Property Name="MA_MTQ" Type="int" Nullable="false" />
+    <Property Name="MATKHAU_MTQ" Type="nchar" MaxLength="10" />
+    <Property Name="TAIKHOAN" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="THANHVIEN">
+    <Key>
+      <PropertyRef Name="MA_TV" />
+    </Key>
+    <Property Name="MA_TV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEN_TV" Type="nchar" MaxLength="10" />
+    <Property Name="GIOITINH_TV" Type="nchar" MaxLength="10" />
+    <Property Name="DIACHI_TV" Type="nchar" MaxLength="10" />
+    <Property Name="SDT_TV" Type="nchar" MaxLength="10" />
+    <Property Name="EMAIL_TV" Type="nchar" MaxLength="10" />
+    <Property Name="MATKHAU_TV" Type="nchar" MaxLength="10" />
+    <Property Name="MA_CV" Type="int" />
+  </EntityType>
+  <EntityType Name="TT_QUYENGOP_HIENVAT">
+    <Key>
+      <PropertyRef Name="MA_QGHV" />
+    </Key>
+    <Property Name="MA_QGHV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MA_HV" Type="int" Nullable="false" />
+    <Property Name="MA_MTQ" Type="int" Nullable="false" />
+    <Property Name="MA_CD" Type="int" />
+    <Property Name="GHICHU" Type="nchar" MaxLength="255" />
+    <Property Name="SOLUONG_QG" Type="int" />
+    <Property Name="TRANGTHAI_HV" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ngay_QG" Type="date" />
+  </EntityType>
+  <EntityType Name="TT_TRAOTANG">
+    <Key>
+      <PropertyRef Name="MA_TT" />
+    </Key>
+    <Property Name="MA_TT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MANOI" Type="int" Nullable="false" />
+    <Property Name="MA_HV" Type="int" Nullable="false" />
+    <Property Name="MA_CD" Type="int" Nullable="false" />
+    <Property Name="SOLUONG_TT" Type="int" Nullable="false" />
+    <Property Name="NGAYTANG" Type="date" Nullable="false" />
+    <Property Name="ANH_TT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MA_TV" Type="int" />
+  </EntityType>
+  <Association Name="FK_CHIENDICH_NOIHOTRO">
+    <End Role="NOIHOTRO" Type="Self.NOIHOTRO" Multiplicity="0..1" />
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NOIHOTRO">
+        <PropertyRef Name="MANOI" />
+      </Principal>
+      <Dependent Role="CHIENDICH">
+        <PropertyRef Name="MA_NOI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHIENDICH_THANHVIEN">
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="0..1" />
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="MA_TV" />
+      </Principal>
+      <Dependent Role="CHIENDICH">
+        <PropertyRef Name="MA_TV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HIEN_VAT_LOAI_HV">
+    <End Role="LOAI_HV" Type="Self.LOAI_HV" Multiplicity="1" />
+    <End Role="HIEN_VAT" Type="Self.HIEN_VAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAI_HV">
+        <PropertyRef Name="MA_LOAI" />
+      </Principal>
+      <Dependent Role="HIEN_VAT">
+        <PropertyRef Name="MA_LOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOIHOTRO_MANHTHUONGQUAN">
+    <End Role="MANHTHUONGQUAN" Type="Self.MANHTHUONGQUAN" Multiplicity="1" />
+    <End Role="NOIHOTRO" Type="Self.NOIHOTRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MANHTHUONGQUAN">
+        <PropertyRef Name="MA_MTQ" />
+      </Principal>
+      <Dependent Role="NOIHOTRO">
+        <PropertyRef Name="MA__MTQ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOIHOTRO_THANHVIEN">
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="0..1" />
+    <End Role="NOIHOTRO" Type="Self.NOIHOTRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="MA_TV" />
+      </Principal>
+      <Dependent Role="NOIHOTRO">
+        <PropertyRef Name="MA_TV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUYEN_CHUCNANG">
+    <End Role="CHUCNANG" Type="Self.CHUCNANG" Multiplicity="1" />
+    <End Role="QUYEN" Type="Self.QUYEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCNANG">
+        <PropertyRef Name="MA_CN" />
+      </Principal>
+      <Dependent Role="QUYEN">
+        <PropertyRef Name="MA_CN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QUYEN_CHUCVU">
+    <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="1" />
+    <End Role="QUYEN" Type="Self.QUYEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="MA_CV" />
+      </Principal>
+      <Dependent Role="QUYEN">
+        <PropertyRef Name="MA_CV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAIKHOA_MTQ_MANHTHUONGQUAN">
+    <End Role="MANHTHUONGQUAN" Type="Self.MANHTHUONGQUAN" Multiplicity="1" />
+    <End Role="TAIKHOAN_MTQ" Type="Self.TAIKHOAN_MTQ" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MANHTHUONGQUAN">
+        <PropertyRef Name="MA_MTQ" />
+      </Principal>
+      <Dependent Role="TAIKHOAN_MTQ">
+        <PropertyRef Name="MA_MTQ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THANHVIEN_CHUCVU">
+    <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="MA_CV" />
+      </Principal>
+      <Dependent Role="THANHVIEN">
+        <PropertyRef Name="MA_CV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TT_QUYENGOP_HIENVAT_CHIENDICH">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TT_QUYENGOP_HIENVAT" Type="Self.TT_QUYENGOP_HIENVAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="MA_CD" />
+      </Principal>
+      <Dependent Role="TT_QUYENGOP_HIENVAT">
+        <PropertyRef Name="MA_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TT_QUYENGOP_HIENVAT_HIEN_VAT">
+    <End Role="HIEN_VAT" Type="Self.HIEN_VAT" Multiplicity="1" />
+    <End Role="TT_QUYENGOP_HIENVAT" Type="Self.TT_QUYENGOP_HIENVAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HIEN_VAT">
+        <PropertyRef Name="MA_HV" />
+      </Principal>
+      <Dependent Role="TT_QUYENGOP_HIENVAT">
+        <PropertyRef Name="MA_HV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TT_QUYENGOP_HIENVAT_MANHTHUONGQUAN">
+    <End Role="MANHTHUONGQUAN" Type="Self.MANHTHUONGQUAN" Multiplicity="1" />
+    <End Role="TT_QUYENGOP_HIENVAT" Type="Self.TT_QUYENGOP_HIENVAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MANHTHUONGQUAN">
+        <PropertyRef Name="MA_MTQ" />
+      </Principal>
+      <Dependent Role="TT_QUYENGOP_HIENVAT">
+        <PropertyRef Name="MA_MTQ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TT_TRAOTANG_CHIENDICH">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="TT_TRAOTANG" Type="Self.TT_TRAOTANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="MA_CD" />
+      </Principal>
+      <Dependent Role="TT_TRAOTANG">
+        <PropertyRef Name="MA_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TT_TRAOTANG_HIEN_VAT">
+    <End Role="HIEN_VAT" Type="Self.HIEN_VAT" Multiplicity="1" />
+    <End Role="TT_TRAOTANG" Type="Self.TT_TRAOTANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HIEN_VAT">
+        <PropertyRef Name="MA_HV" />
+      </Principal>
+      <Dependent Role="TT_TRAOTANG">
+        <PropertyRef Name="MA_HV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TT_TRAOTANG_NOIHOTRO1">
+    <End Role="NOIHOTRO" Type="Self.NOIHOTRO" Multiplicity="1" />
+    <End Role="TT_TRAOTANG" Type="Self.TT_TRAOTANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NOIHOTRO">
+        <PropertyRef Name="MANOI" />
+      </Principal>
+      <Dependent Role="TT_TRAOTANG">
+        <PropertyRef Name="MANOI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TT_TRAOTANG_THANHVIEN">
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="0..1" />
+    <End Role="TT_TRAOTANG" Type="Self.TT_TRAOTANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="MA_TV" />
+      </Principal>
+      <Dependent Role="TT_TRAOTANG">
+        <PropertyRef Name="MA_TV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NIENLUANCOSOModelStoreContainer">
+    <EntitySet Name="CHIENDICH" EntityType="Self.CHIENDICH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHUCNANG" EntityType="Self.CHUCNANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HIEN_VAT" EntityType="Self.HIEN_VAT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAI_HV" EntityType="Self.LOAI_HV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MANHTHUONGQUAN" EntityType="Self.MANHTHUONGQUAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOIHOTRO" EntityType="Self.NOIHOTRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAIKHOAN_ADMIN" EntityType="Self.TAIKHOAN_ADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAIKHOAN_MTQ" EntityType="Self.TAIKHOAN_MTQ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THANHVIEN" EntityType="Self.THANHVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TT_QUYENGOP_HIENVAT" EntityType="Self.TT_QUYENGOP_HIENVAT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TT_TRAOTANG" EntityType="Self.TT_TRAOTANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUYEN" EntityType="Self.QUYEN" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [QUYEN].[MA_CV] AS [MA_CV], 
+    [QUYEN].[MA_CN] AS [MA_CN]
+    FROM [dbo].[QUYEN] AS [QUYEN]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CHIENDICH_NOIHOTRO" Association="Self.FK_CHIENDICH_NOIHOTRO">
+      <End Role="NOIHOTRO" EntitySet="NOIHOTRO" />
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHIENDICH_THANHVIEN" Association="Self.FK_CHIENDICH_THANHVIEN">
+      <End Role="THANHVIEN" EntitySet="THANHVIEN" />
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HIEN_VAT_LOAI_HV" Association="Self.FK_HIEN_VAT_LOAI_HV">
+      <End Role="LOAI_HV" EntitySet="LOAI_HV" />
+      <End Role="HIEN_VAT" EntitySet="HIEN_VAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOIHOTRO_MANHTHUONGQUAN" Association="Self.FK_NOIHOTRO_MANHTHUONGQUAN">
+      <End Role="MANHTHUONGQUAN" EntitySet="MANHTHUONGQUAN" />
+      <End Role="NOIHOTRO" EntitySet="NOIHOTRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOIHOTRO_THANHVIEN" Association="Self.FK_NOIHOTRO_THANHVIEN">
+      <End Role="THANHVIEN" EntitySet="THANHVIEN" />
+      <End Role="NOIHOTRO" EntitySet="NOIHOTRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUYEN_CHUCNANG" Association="Self.FK_QUYEN_CHUCNANG">
+      <End Role="CHUCNANG" EntitySet="CHUCNANG" />
+      <End Role="QUYEN" EntitySet="QUYEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QUYEN_CHUCVU" Association="Self.FK_QUYEN_CHUCVU">
+      <End Role="CHUCVU" EntitySet="CHUCVU" />
+      <End Role="QUYEN" EntitySet="QUYEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAIKHOA_MTQ_MANHTHUONGQUAN" Association="Self.FK_TAIKHOA_MTQ_MANHTHUONGQUAN">
+      <End Role="MANHTHUONGQUAN" EntitySet="MANHTHUONGQUAN" />
+      <End Role="TAIKHOAN_MTQ" EntitySet="TAIKHOAN_MTQ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THANHVIEN_CHUCVU" Association="Self.FK_THANHVIEN_CHUCVU">
+      <End Role="CHUCVU" EntitySet="CHUCVU" />
+      <End Role="THANHVIEN" EntitySet="THANHVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TT_QUYENGOP_HIENVAT_CHIENDICH" Association="Self.FK_TT_QUYENGOP_HIENVAT_CHIENDICH">
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+      <End Role="TT_QUYENGOP_HIENVAT" EntitySet="TT_QUYENGOP_HIENVAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TT_QUYENGOP_HIENVAT_HIEN_VAT" Association="Self.FK_TT_QUYENGOP_HIENVAT_HIEN_VAT">
+      <End Role="HIEN_VAT" EntitySet="HIEN_VAT" />
+      <End Role="TT_QUYENGOP_HIENVAT" EntitySet="TT_QUYENGOP_HIENVAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TT_QUYENGOP_HIENVAT_MANHTHUONGQUAN" Association="Self.FK_TT_QUYENGOP_HIENVAT_MANHTHUONGQUAN">
+      <End Role="MANHTHUONGQUAN" EntitySet="MANHTHUONGQUAN" />
+      <End Role="TT_QUYENGOP_HIENVAT" EntitySet="TT_QUYENGOP_HIENVAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TT_TRAOTANG_CHIENDICH" Association="Self.FK_TT_TRAOTANG_CHIENDICH">
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+      <End Role="TT_TRAOTANG" EntitySet="TT_TRAOTANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TT_TRAOTANG_HIEN_VAT" Association="Self.FK_TT_TRAOTANG_HIEN_VAT">
+      <End Role="HIEN_VAT" EntitySet="HIEN_VAT" />
+      <End Role="TT_TRAOTANG" EntitySet="TT_TRAOTANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TT_TRAOTANG_NOIHOTRO1" Association="Self.FK_TT_TRAOTANG_NOIHOTRO1">
+      <End Role="NOIHOTRO" EntitySet="NOIHOTRO" />
+      <End Role="TT_TRAOTANG" EntitySet="TT_TRAOTANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TT_TRAOTANG_THANHVIEN" Association="Self.FK_TT_TRAOTANG_THANHVIEN">
+      <End Role="THANHVIEN" EntitySet="THANHVIEN" />
+      <End Role="TT_TRAOTANG" EntitySet="TT_TRAOTANG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

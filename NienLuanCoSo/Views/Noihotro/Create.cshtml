@@ -1,0 +1,68 @@
+﻿@model NienLuanCoSo.NOIHOTRO
+
+@{
+    ViewBag.Title = "Yêu câu hỗ trợ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Yêu câu hỗ trợ</h2>
+
+@using (Html.BeginForm("Create", "Noihotro",FormMethod.Post,new {enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Thông tin nơi cần hỗ trợ</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DIACHI, "Địa chỉ cần hỗ trợ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TINHTRANG, "Tình trạng", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TINHTRANG, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TINHTRANG, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CANHOTRO, "Cần hỗ trợ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CANHOTRO, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CANHOTRO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+   
+
+    <div class="form-group">
+        <label class="control-label col-md-2">
+            Ảnh:
+        </label>
+        <div class="col-md-10">
+            <input type="file"  name="image" placeholder="Thêm ảnh" />
+            @ViewBag.ThongBao
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Thêm" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Xem danh sách", "Index")
+</div>

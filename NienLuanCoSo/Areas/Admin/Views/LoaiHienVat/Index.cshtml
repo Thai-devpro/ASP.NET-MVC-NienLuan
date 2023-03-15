@@ -1,0 +1,35 @@
+﻿@model IEnumerable<NienLuanCoSo.LOAI_HV>
+
+@{
+    ViewBag.Title = "Loại hiện vật";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Loại hiện vật</h2>
+
+
+
+<p>
+    @Html.ActionLink("Thêm", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Loại hiện vật
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIEN_GIAI)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MA_LOAI }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MA_LOAI })
+        </td>
+    </tr>
+}
+
+</table>

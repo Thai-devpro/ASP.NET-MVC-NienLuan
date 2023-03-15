@@ -1,0 +1,59 @@
+﻿@model IEnumerable<NienLuanCoSo.HIEN_VAT>
+
+@{
+    ViewBag.Title = "Hiện vật";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hiện vật</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Loại hiện vật
+        </th>
+        <th>
+            Tên hiện vật
+        </th>
+        <th>
+            Đơn vị tính
+        </th>
+        <th>
+            Số lượng còn
+        </th>
+        <th>
+            Giá
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.LOAI_HV.DIEN_GIAI)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TEN_HV)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONVITINH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SOLUONGCON)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GIA)
+    </td>
+
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.MA_HV }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.MA_HV })
+    </td>
+</tr>
+}
+
+</table>

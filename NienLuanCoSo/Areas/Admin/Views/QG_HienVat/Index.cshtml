@@ -1,0 +1,83 @@
+﻿@model IEnumerable<NienLuanCoSo.TT_QUYENGOP_HIENVAT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách quyên góp hiện vật</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group form-inline">
+        <form style="margin: 0px; padding: 0px;">
+            <span>Tìm quyên góp:  </span> @Html.TextBox("Search", "", new { @class = "form-control" })
+            <input type="submit" class="btn btn-success" value="Tìm kiếm" />
+        </form>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Mã quyên góp
+        </th>
+        <th>
+            Hiện vật
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Mạnh thường quân
+        </th>
+        <th>
+            Chiến dịch
+        </th>
+        <th>
+            Ghi chú
+        </th>
+
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Ngày quyên góp
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MA_QGHV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HIEN_VAT.TEN_HV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONG_QG) <a>@item.HIEN_VAT.DONVITINH</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANHTHUONGQUAN.HOTEN_MTQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHIENDICH.TEN_CD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GHICHU)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TRANGTHAI_HV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay_QG)
+            </td>
+            <td>
+                @Html.ActionLink("Cập nhật", "Edit", new { id = item.MA_QGHV })
+
+            </td>
+        </tr>
+    }
+
+</table>

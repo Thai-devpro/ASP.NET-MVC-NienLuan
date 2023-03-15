@@ -1,0 +1,67 @@
+﻿@model NienLuanCoSo.NOIHOTRO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NOIHOTRO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DIACHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TINHTRANG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINHTRANG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CANHOTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANHOTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI_NHT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI_NHT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANH_NTH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANH_NTH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MANHTHUONGQUAN.HOTEN_MTQ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MANHTHUONGQUAN.HOTEN_MTQ)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MANOI }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
